@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    ~ Copyright 2021 Adobe
+    ~
+    ~ Licensed under the Apache License, Version 2.0 (the "License");
+    ~ you may not use this file except in compliance with the License.
+    ~ You may obtain a copy of the License at
+    ~
+    ~     http://www.apache.org/licenses/LICENSE-2.0
+    ~
+    ~ Unless required by applicable law or agreed to in writing, software
+    ~ distributed under the License is distributed on an "AS IS" BASIS,
+    ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    ~ See the License for the specific language governing permissions and
+    ~ limitations under the License.
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+<jcr:root xmlns:sling="http://sling.apache.org/jcr/sling/1.0" xmlns:granite="http://www.adobe.com/jcr/granite/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+    jcr:primaryType="cq:Page">
+    <properties/>
+    <createcloudconfigwizard/>
+    <jcr:content
+        jcr:primaryType="nt:unstructured"
+        jcr:title="AEM | DocuSign Cloud Configurations"
+        sling:resourceType="granite/ui/components/shell/collectionpage"
+        consoleId="cq-docusign-cloud-configurations"
+        contentPath="${requestPathInfo.suffix}"
+        currentView="${state[&quot;docusign-cloudconfig.shell.collectionpage.layoutId&quot;].string}"
+        modeGroup="cq-confadmin-admin-childpages"
+        pageURITemplate="/apps/docusign/cloudConfig/content/docusign.html{+id}"
+        targetCollection=".cq-confadmin-admin-childpages">
+        <redirector
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="granite/ui/components/coral/foundation/admin/contentchecker"
+            allowed="^(/conf|/conf/(.*))$"
+            path="${requestPathInfo.suffix}"
+            redirectWhenEmpty="/apps/docusign/cloudConfig/content/docusign.html/conf"/>
+        <head jcr:primaryType="nt:unstructured">
+            <clientlibs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/foundation/includeclientlibs"
+                categories="[cq.common.wcm]"/>
+        </head>
+        <views jcr:primaryType="nt:unstructured">
+            <column
+                granite:rel="cq-confadmin-admin-childpages"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Column View"
+                sling:resourceType="granite/ui/components/coral/foundation/columnview"
+                icon="viewColumn"
+                limit="{Long}40"
+                loadAncestors="{Boolean}true"
+                metaResourceType="/apps/docusign/cloudConfig/components/configurations/meta"
+                modeGroup="cq-confadmin-admin-childpages"
+                path="${empty requestPathInfo.suffix ? &quot;/conf&quot; : requestPathInfo.suffix}"
+                previewSrc="/mnt/overlay/docusign/cloudConfig/content/docusign/createcloudconfigwizard/commons/columnpreview.html{+id}"
+                rootPath="/conf"
+                selectionCount="single"
+                size="${empty requestPathInfo.selectors[1] ? &quot;40&quot; : requestPathInfo.selectors[1]}"
+                src="/mnt/overlay/docusign/cloudConfig/content/docusign/jcr:content/views/column{.offset,limit}.html{+id}">
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    allowedResourceTypes="[docusign/cloudConfig/content/docusign/page]"
+                    group="docusign"/>
+                <datasource
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="cq/cloudconfig/components/admin/datasources/configurations"
+                    itemResourceType="docusign/cloudConfig/components/configurations/views/column"
+                    limit="${empty requestPathInfo.selectors[1] ? &quot;41&quot; : requestPathInfo.selectors[1] + 1}"
+                    offset="${requestPathInfo.selectors[0]}"
+                    path="${requestPathInfo.suffix}"/>
+            </column>
+            <card
+                granite:rel="cq-confadmin-admin-childpages"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="Card View"
+                sling:resourceType="granite/ui/components/coral/foundation/masonry"
+                icon="viewCard"
+                layoutId="card"
+                limit="{Long}20"
+                metaResourceType="/apps/docusign/cloudConfig/components/configurations/meta"
+                modeGroup="cq-confadmin-admin-childpages"
+                path="${requestPathInfo.suffix}"
+                selectionCount="single"
+                selectionMode="${state[&quot;docusign-cloudconfig.shell.collectionpage.selectionMode&quot;].boolean}"
+                size="${empty requestPathInfo.selectors[1] ? &quot;20&quot; : requestPathInfo.selectors[1]}"
+                src="/mnt/overlay/docusign/cloudConfig/content/docusign/jcr:content/views/card{.offset,limit}.html{+id}"
+                stateId="docusign-cloudconfig.shell.collectionpage">
+                <datasource
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="cq/cloudconfig/components/admin/datasources/configurations"
+                    itemResourceType="docusign/cloudConfig/components/configurations/views/card"/>
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    allowedResourceTypes="[docusign/cloudConfig/content/docusign/page]"
+                    group="docusign"/>
+            </card>
+            <list
+                granite:rel="cq-confadmin-admin-childpages"
+                jcr:primaryType="nt:unstructured"
+                jcr:title="List View"
+                sling:resourceType="granite/ui/components/coral/foundation/table"
+                icon="viewList"
+                layoutId="list"
+                limit="{Long}40"
+                metaResourceType="/apps/docusign/cloudConfig/components/configurations/meta"
+                modeGroup="cq-confadmin-admin-childpages"
+                path="${requestPathInfo.suffix}"
+                selectionCount="single"
+                selectionMode="row"
+                size="${empty requestPathInfo.selectors[1] ? &quot;40&quot; : requestPathInfo.selectors[1]}"
+                sortMode="remote"
+                src="/mnt/overlay/docusign/cloudConfig/content/docusign/jcr:content/views/list{.offset,limit}.html{+id}{?sortName,sortDir}"
+                stateId="docusign-cloudconfig.shell.collectionpage">
+                <columns jcr:primaryType="nt:unstructured">
+                    <select
+                        jcr:primaryType="nt:unstructured"
+                        select="{Boolean}true"/>
+                    <title
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Title"
+                        sortable="{Boolean}true"/>
+                    <modified
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Modified"
+                        sortable="{Boolean}true"
+                        sortType="date"/>
+                </columns>
+                <datasource
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="cq/cloudconfig/components/admin/datasources/configurations"
+                    itemResourceType="docusign/cloudConfig/components/configurations/views/row"/>
+                <granite:data
+                    jcr:primaryType="nt:unstructured"
+                    allowedResourceTypes="[docusign/cloudConfig/content/docusign/page]"
+                    group="docusign"/>
+            </list>
+        </views>
+        <breadcrumbs
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="cq/cloudconfig/components/admin/datasources/breadcrumbs"
+            rootPath="/conf"
+            rootTitle="Configurations"/>
+        <actions jcr:primaryType="nt:unstructured">
+            <secondary jcr:primaryType="nt:unstructured">
+                <create
+                    granite:class="cq-confadmin-actions-createconfig-activator"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/collection/action"
+                    action="foundation.link"
+                    relScope="collection"
+                    target=".cq-confadmin-admin-childpages"
+                    text="Create"
+                    variant="primary">
+                    <data
+                        jcr:primaryType="nt:unstructured"
+                        href.uritemplate="/apps/docusign/cloudConfig/content/docusign/createcloudconfigwizard/cloudservices.html{+id}"/>
+                </create>
+            </secondary>
+            <selection jcr:primaryType="nt:unstructured">
+                <viewproperties
+                    granite:class="cq-confadmin-actions-properties-activator"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/collection/action"
+                    action="foundation.link"
+                    icon="infoCircle"
+                    target=".cq-confadmin-admin-childpages"
+                    text="Properties"
+                    variant="actionBar">
+                    <data
+                        jcr:primaryType="nt:unstructured"
+                        href.uritemplate="/mnt/overlay/docusign/cloudConfig/content/docusign/properties.html{?item*}"/>
+                </viewproperties>
+                <publish
+                    granite:rel="cq-confadmin-actions-publish-activator"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/collection/action"
+                    action="cq.wcm.publish"
+                    activeSelectionCount="multiple"
+                    icon="globe"
+                    target=".cq-confadmin-admin-childpages"
+                    text="Publish"
+                    variant="actionBar">
+                    <granite:data
+                        jcr:primaryType="nt:unstructured"
+                        foundation-mode-group="cq-confadmin-admin-childpages"
+                        foundation-mode-value="default"/>
+                    <data
+                        jcr:primaryType="nt:unstructured"
+                        referenceSrc.url="/libs/wcm/core/content/reference.json?_charset_=utf-8{&amp;path*}"
+                        wizardSrc.uritemplate="/mnt/overlay/wcm/core/content/sites/publishpagewizard.html?_charset_=utf-8{&amp;item*}"/>
+                </publish>
+                <unpublish
+                    granite:class="foundation-collection-action"
+                    granite:rel="cq-confadmin-actions-unpublish-activator"
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="granite/ui/components/coral/foundation/collection/action"
+                    action="cq.wcm.unpublish"
+                    icon="globeStrike"
+                    target=".cq-confadmin-admin-childpages"
+                    text="Unpublish"
+                    variant="actionBar">
+                    <data
+                        jcr:primaryType="nt:unstructured"
+                        referenceSrc.url="/bin/wcm/references.json?_charset_=utf-8{&amp;path*}"/>
+                </unpublish>
+            </selection>
+        </actions>
+    </jcr:content>
+</jcr:root>
