@@ -56,6 +56,11 @@
                 name="./includeAttachments"
                 text="Include attachments"
                 value="true"/>
+            <enablePdf
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/form/hidden"
+                name="./enableDoRSubmission"
+                value="true"/>
         </items>
     </content>
 </jcr:root>
