@@ -45,8 +45,8 @@
         <bnd.version>5.1.2</bnd.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <aem.sdk.api>2021.8.5743.20210817T230726Z-210700</aem.sdk.api>
-        <aem.forms.sdk.api>2021.08.19.02</aem.forms.sdk.api>
+        <aem.uber.jar>6.5.13</aem.uber.jar>
+        <aem.forms.sdk.api>6.0.630</aem.forms.sdk.api>
         <aemanalyser.version>1.1.2</aemanalyser.version>
         <componentGroupName>DocuSign Integration</componentGroupName>
         <install.dir>${localRepositoryPath}</install.dir>
@@ -262,7 +262,7 @@ Bundle-DocURL:
                     <groupId>org.apache.jackrabbit</groupId>
                     <artifactId>filevault-package-maven-plugin</artifactId>
                     <extensions>true</extensions>
-                    <version>1.1.6</version>
+                    <version>1.0.3</version>
                     <configuration>
                         <filterSource>src/main/content/META-INF/vault/filter.xml</filterSource>
                         <validatorsSettings>
@@ -562,14 +562,13 @@ Bundle-DocURL:
         <dependencies>
             <dependency>
                 <groupId>com.adobe.aem</groupId>
-                <artifactId>aem-sdk-api</artifactId>
-                <version>${aem.sdk.api}</version>
+                <artifactId>uber-jar</artifactId>
+                <version>${aem.uber.jar}</version>
                 <scope>provided</scope>
             </dependency>
-            <!-- https://mvnrepository.com/artifact/com.adobe.aem/aem-forms-sdk-api (for master - August release) -->
             <dependency>
-                <groupId>com.adobe.aem</groupId>
-                <artifactId>aem-forms-sdk-api</artifactId>
+                <groupId>com.adobe.aemfd</groupId>
+                <artifactId>aemfd-client-sdk</artifactId>
                 <version>${aem.forms.sdk.api}</version>
             </dependency>
         </dependencies>

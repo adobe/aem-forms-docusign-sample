@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:rep="internal"
+    jcr:primaryType="rep:SystemUser"
+    jcr:uuid="9dd99a8f-7291-3e7b-a94c-e705c5e813e1"
+    rep:authorizableId="forms-docusign-sample-service-user"
+    rep:principalName="forms-docusign-sample-service-user"/>

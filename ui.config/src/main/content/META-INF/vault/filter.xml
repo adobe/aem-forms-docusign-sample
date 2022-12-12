@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workspaceFilter version="1.0">
     <filter root="/apps/docusign/osgiconfig"/>
+    <filter root="/conf" mode="merge"/>
+    <filter root="/home/users/system/Twj2QyPSv8L2WAgtsLF5"/>
 </workspaceFilter>

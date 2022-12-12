@@ -117,7 +117,7 @@
 
         <dependency>
             <groupId>com.adobe.aem</groupId>
-            <artifactId>aem-sdk-api</artifactId>
+            <artifactId>uber-jar</artifactId>
         </dependency>
 
         <!-- HTL dependencies needed for the HTL Maven Plugin source code generation -->

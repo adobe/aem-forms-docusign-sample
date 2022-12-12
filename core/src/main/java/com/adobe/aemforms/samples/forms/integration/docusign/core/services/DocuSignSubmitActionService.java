@@ -97,12 +97,15 @@ public class DocuSignSubmitActionService implements FormSubmitActionService {
         /* read cloud configuration */
         Resource configResource = null ;
         CloudConfigSlingModel configProperties = null;
-        if (formContainerResource.getParent() != null) {
-            ValueMap properties = formContainerResource.getParent().getValueMap();
-            configResource = CloudConfigurationUtils.getConfigResource(properties.get(CONF, new String()), resourceResolverFactory);
-            configProperties = configResource != null? configResource.adaptTo(CloudConfigSlingModel.class) : null;
-            logger.info(LOG_TEMPLATE, "DocuSign Cloud Configuration Read", configResource);
+        ValueMap propertiesMap = formContainerResource.getValueMap();
+        String cloudConfigurationPath = propertiesMap.get(CONF, null);
+        if(cloudConfigurationPath == null) {
+            ValueMap parentPropertiesMap = formContainerResource.getParent().getValueMap();
+            cloudConfigurationPath = parentPropertiesMap.get(CONF, new String());
         }
+        configResource = CloudConfigurationUtils.getConfigResource(cloudConfigurationPath, resourceResolverFactory);
+        configProperties = configResource != null? configResource.adaptTo(CloudConfigSlingModel.class) : null;
+        logger.info(LOG_TEMPLATE, "DocuSign Cloud Configuration Read", configResource);
         /* get new Refresh and Access token */
         try {
             getNewTokens(configProperties);

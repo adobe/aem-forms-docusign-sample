@@ -31,18 +31,8 @@
             <plugin>
                 <groupId>org.apache.felix</groupId>
                 <artifactId>maven-bundle-plugin</artifactId>
+                <version>1.4.0</version>
                 <extensions>true</extensions>
-                <executions>
-                    <execution>
-                        <id>scr-metadata</id>
-                        <goals>
-                            <goal>manifest</goal>
-                        </goals>
-                        <configuration>
-                            <supportIncrementalBuild>true</supportIncrementalBuild>
-                        </configuration>
-                    </execution>
-                </executions>
                 <configuration>
                     <exportScr>true</exportScr>
                     <instructions>
@@ -126,12 +116,19 @@ Import-Package: javax.annotation;version=0.0.0,*
             <version>1.4.0</version>
         </dependency>
         <dependency>
-            <groupId>com.adobe.aem</groupId>
-            <artifactId>aem-forms-sdk-api</artifactId>
+        <groupId>org.osgi</groupId>
+            <artifactId>org.osgi.annotation</artifactId>
+            <version>6.0.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.aemfd</groupId>
+            <artifactId>aemfd-client-sdk</artifactId>
         </dependency>
         <dependency>
             <groupId>com.adobe.aem</groupId>
-            <artifactId>aem-sdk-api</artifactId>
+            <artifactId>uber-jar</artifactId>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>

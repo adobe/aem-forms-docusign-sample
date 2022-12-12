@@ -48,8 +48,8 @@
                 <configuration>
                     <properties>
                         <cloudManagerTarget>none</cloudManagerTarget>
+                        <acHandling>merge_preserve</acHandling>
                     </properties>
-                    <packageType>container</packageType>
                     <showImportPackageReport>false</showImportPackageReport>
                     <repositoryStructurePackages>
                         <repositoryStructurePackage>
